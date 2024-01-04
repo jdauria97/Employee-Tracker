@@ -25,3 +25,14 @@ function selectManager() {
 
 }
 
+function addEmployee() {
+
+}
+
+function addRole() {
+
+}
+
+function addDepartment() {
+    
+}
