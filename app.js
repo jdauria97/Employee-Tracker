@@ -17,3 +17,11 @@ function viewDepartments() {
 
 }
 
+function selectRole() {
+
+}
+
+function selectManager() {
+
+}
+
