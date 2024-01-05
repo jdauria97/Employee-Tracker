@@ -20,25 +20,25 @@ function startPrompt() {
     }
 ]).then(res => {
         let choice = res.choice;
-        if(choice = "View Employees") {
+        if(choice === "View Employees") {
             viewEmployees()
             console.log(choice)
-        } else if (choice = "View Roles") {
+        } else if (choice === "View Roles") {
             viewRoles()
             console.log(choice)
-        } else if (choice = "View Departments") {
+        } else if (choice === "View Departments") {
             viewDepartments()
             console.log(choice)
-        } else if (choice = "Add Employee") {
+        } else if (choice === "Add Employee") {
             addEmployee()
             console.log(choice)
-        } else if (choice = "Add Role") {
+        } else if (choice === "Add Role") {
             addRole()
             console.log(choice)
-        } else if (choice = "Add Department") {
+        } else if (choice === "Add Department") {
             addDepartment()
             console.log(choice)
-        } else if (choice = "Update Employee") {
+        } else if (choice === "Update Employee") {
             updateEmployee()
             console.log(choice)
         }
