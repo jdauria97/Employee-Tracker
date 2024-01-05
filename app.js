@@ -44,7 +44,7 @@ function viewEmployees() {
       console.table(res)
       startPrompt()
   })
-}
+};
 
 function viewRoles() {
     connection.query("SELECT employee.first_name, employee.last_name, role.title AS Title FROM employee JOIN role ON employee.role_id = role.id;", 
@@ -53,7 +53,7 @@ function viewRoles() {
     console.table(res)
     startPrompt()
     })
-}
+};
 
 function viewDepartments() {
     connection.query("SELECT employee.first_name, employee.last_name, department.name AS Department FROM employee JOIN role ON employee.role_id = role.id JOIN department ON role.department_id = department.id ORDER BY employee.id;", 
@@ -62,30 +62,69 @@ function viewDepartments() {
       console.table(res)
       startPrompt()
     })
-}
+};
 
 function selectRole() {
     console.log("select role")
-}
+};
 
 function selectManager() {
     console.log("select manager")
-}
+};
 
 function addEmployee() {
-    console.log("add employee")
-}
+    inquirer.prompt([
+        {
+          name: "First Name",
+          type: "input",
+          message: "Enter First Name"
+        },
+        {
+          name: "Last Name",
+          type: "input",
+          message: "Enter Last Name"
+        },
+        {
+          name: "Role",
+          type: "list",
+          message: "Select Role",
+          choices: selectRole()
+        },
+        {
+            name: "Choice",
+            type: "rawlist",
+            message: "Whats their managers name?",
+            choices: selectManager()
+        }
+    ]).then(function (val) {
+      var roleId = selectRole().indexOf(val.role) + 1
+      var managerId = selectManager().indexOf(val.choice) + 1
+      connection.query("INSERT INTO employee SET ?", 
+      {
+          first_name: val.firstName,
+          last_name: val.lastName,
+          manager_id: managerId,
+          role_id: roleId
+          
+      }, function(err){
+          if (err) throw err
+          console.table(val)
+          startPrompt()
+      })
+
+  })
+};
 
 function addRole() {
     console.log("add role")
-}
+};
 
 function addDepartment() {
     console.log("add department")
-}
+};
 
 function updateEmployee() {
     console.log("update employee")
-}
+};
 
 startPrompt();
