@@ -72,12 +72,26 @@ function viewDepartments() {
     })
 };
 
+var roles = [];
 function selectRole() {
-    console.log("select role")
+    connection.query("SELECT * FROM role", function(err, res) {
+        if (err) throw err
+        for (var i = 0; i < res.length; i++) {
+          roles.push(res[i].title);
+        }
+      })
+      return roles;
 };
 
+var managers = [];
 function selectManager() {
-    console.log("select manager")
+    connection.query("SELECT first_name, last_name FROM employee WHERE manager_id IS NULL", function(err, res) {
+        if (err) throw err
+        for (var i = 0; i < res.length; i++) {
+          managers.push(res[i].first_name);
+        }
+      })
+      return managers;
 };
 
 function addEmployee() {
