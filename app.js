@@ -1,6 +1,6 @@
 const inquirer = require("inquirer")
 // const mysql = require("mysql")
-const connection = require("./connection")
+// const connection = require("./connection")
 
 function startPrompt() {
     inquirer.prompt([
