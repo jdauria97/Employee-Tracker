@@ -18,21 +18,29 @@ function startPrompt() {
               "Update Employee"
             ]
     }
-]).then((answers) => {
-        if("View Employees") {
-            viewDepartments()
-        } else if ("View Roles") {
+]).then(res => {
+        let choice = res.choice;
+        if(choice = "View Employees") {
+            viewEmployees()
+            console.log(choice)
+        } else if (choice = "View Roles") {
             viewRoles()
-        } else if ("View Departments") {
+            console.log(choice)
+        } else if (choice = "View Departments") {
             viewDepartments()
-        } else if ("Add Employee") {
+            console.log(choice)
+        } else if (choice = "Add Employee") {
             addEmployee()
-        } else if ("Add Role") {
+            console.log(choice)
+        } else if (choice = "Add Role") {
             addRole()
-        } else if ("Add Department") {
+            console.log(choice)
+        } else if (choice = "Add Department") {
             addDepartment()
-        } else if ("Update Employee") {
+            console.log(choice)
+        } else if (choice = "Update Employee") {
             updateEmployee()
+            console.log(choice)
         }
     })
 };
